@@ -1,7 +1,8 @@
 import PySimpleGUI as sg
 from pathlib import Path    
-
+import sys
 import helper_functions as help
+import os
 
 
 sg.theme('SystemDefault1')
@@ -24,7 +25,11 @@ file_path = str(values[0]);
 file_name = Path(file_path).name;
 CCA_name = file_name[0:6];
 
-help.main(file_path, CCA_name)
+base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+cover_page = os.path.join(base_path,"Cover Page.xlsx")
+
+
+help.main(file_path, CCA_name,cover_page)
 
 
 
